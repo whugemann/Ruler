@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Ruler": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\tmp\\__Gutachten\\Messlatte\\Bild 0003.JPG\" /iv"
+    }
+  }
+}
