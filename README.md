@@ -17,3 +17,4 @@ i.e. setting an external viewer, which can be initiated via ctrl + number:
 The parameter “/iv” signals that the current app was called by IrfanView.
 In this case, the pixel values for the top and bottom dimensions are determined based on the selected area,
 if available. The selection area is extracted from IrfanView's window title.
+![Github_example](https://github.com/user-attachments/assets/d4c9c32e-5bcf-48c4-bec1-0a00e5612e72)
