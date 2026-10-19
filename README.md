@@ -1,20 +1,29 @@
-This C# program straightens out (rectifies) photos of (mostly) damaged cars that were taken
-from eýe height, using a ruler (metro plegable) leaned to the car, looking down on the damage.
-It makes use of Magick.NET to perform this task.
+RULER brings a photo of (damaged) vehicle to scale, by adjusting its resolution (pixel per cm) to an integer value. As a prequesite, a certain measure in the plane captured by the photo has to be known, for example the vehicle's wheelbase or a distance on a ruler (metro plegable) leant to the vehicle.
 
-The file name of the photo must be passed as a parameter (otherwise the program will abort).
+Especially photographs by the (German) police are often not to scale, because the main axis of the photo camera is not perpendicular to the plane of interest. Instead, the photos are often taken from eye height, distorting the perspective in vertical direction. RULER can correct this vertical distortion.
 
-The program requires the following input values:
-   1: Position of the top measurement on the stick in pixels  (e.g., at 80 cm)
-   2: Position of the middle measurement on the bar in pixels (e.g., at 45 cm)
-   3: Position of the lowest measurement on the bar in pixels (e.g., at 10 cm)
-   4: Number of desired horizontal guide lines      (e.g.,  8 => 10 cm intervals)
+Preferably, RULER should be called by an photo viewer that specifies the selection area. At the moment, this viewer must be IrfanView, specifying the selection area in it's title bar. 
+If the selection has protrait format (i.e. is higher than wide), the reference measurement is assumed to stretch in vertical direction, otherwise (land scape selection) in horizontal direction (for example the wheelbase).
 
-The program can be called from IrfanView by inserting the following line into IrfanViews INI file,
-i.e. setting an external viewer, which can be initiated via ctrl + number:
-  ExternalViewer9=Path_to_the_exe_file_of_this_program “”%1“ /iv”
+If the reference object stretches in vertical direction (like a police ruler leaned to the car), a possible perspective distortion in vertical direction is corrected by RULER. 
 
-The parameter “/iv” signals that the current app was called by IrfanView.
-In this case, the pixel values for the top and bottom dimensions are determined based on the selected area,
-if available. The selection area is extracted from IrfanView's window title.
-![Github_example](https://github.com/user-attachments/assets/d4c9c32e-5bcf-48c4-bec1-0a00e5612e72)
+RULER asks the user to supply the following input values.
+
+1. Optional and only if the selection area has portrait format: Position of the middle measurement on the ruler in pixels. If no value is supplied, the distortion correction is skipped.
+
+2. Real world distance of the larger extend of the selection area in centimeters.
+
+3. Real world distance between the horizontal guiding lines drawn onto the (rectified) photo in centimeters.
+
+If the selection has landscape format, it's lower side denotes the reference level (in most cases the ground level) and the guiding lines are drawn in reference to this level.
+
+If no selection is provided, RULER first asks for the stretch of the reference distance (vertical or horizontal) and then for the upper and lower (respectively left and right) value in pixels.
+
+...
+
+RULER can be called from within IrfanView by inserting the following line into IrfanView's INI file:
+ExternalViewer9=Path_to_Ruler.exe ""%1" /iv"
+
+The parameter "/iv" signals RULER that it was called by IrfanView, providing the image filename an a selection area (in it's title text). In IrfanView, up to ten different external viewers can be called by pressing Crtl + [0 .. 9].
+
+As RULER has to search for the IrfanView window, it may run into trouble, if more than one IrfanView window is open. You can prevent this by enabling the built-in single-instance setting or by using a command-line flag /one.
