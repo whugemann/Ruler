@@ -2,7 +2,7 @@
   "profiles": {
     "Ruler": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Projekte\\Büro\\Skripte\\Ruler\\Testfotos\\Motorrad.jpg\" \"/iv\""
+      "commandLineArgs": "\"C:\\Projekte\\Büro\\Skripte\\Ruler\\Testfotos\\Roy.jpg\" \"/iv\""
     }
   }
 }

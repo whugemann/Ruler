@@ -128,6 +128,8 @@ namespace Ruler
          // If the user does not provide a middle value, the rectification is not performed, but only the guiding lines are drawn over the original image.
 
          var image = new MagickImage(inputFile);
+         image.AutoOrient();
+         image.Orientation = Orientation.TopLeft;
 
          uint deltaPx;
          if (!selectionAvailable)
