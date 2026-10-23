@@ -7,8 +7,8 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-    <BuildDate>$([System.DateTime]::Now.ToString("dd.MM.yyyy"))</BuildDate>
-    <InformationalVersion>Version 1.1.0 –- $(BuildDate)</InformationalVersion>
+    <BuildDate>$([System.DateTime]::Now.ToString("yyyy-MM-dd"))</BuildDate>
+    <InformationalVersion>Version 1.1.1 –- $(BuildDate)</InformationalVersion>
     <PublishAot>False</PublishAot>
     <SupportedOSPlatformVersion>8.0</SupportedOSPlatformVersion>
     <PlatformTarget>x64</PlatformTarget>

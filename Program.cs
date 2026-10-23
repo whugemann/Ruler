@@ -177,8 +177,12 @@ namespace Ruler
          double dmiddle = middle * scaling;
          double dbottom = bottom * scaling;
 
-         // Set scale to 1:10
-         image.Density = new Density(ippcm * 10, ippcm * 10, DensityUnit.PixelsPerCentimeter);
+         // Read scale factor from ini file, default is 10.0
+
+         GetPrivateProfileString("Settings", "Scalefactor", "10.0", RetVal, 255, iniFileName);
+         double sf = Convert.ToDouble(RetVal.ToString(), CultureInfo.InvariantCulture);
+
+         image.Density = new Density(ippcm * sf, ippcm * sf, DensityUnit.PixelsPerCentimeter);
 
          string OutputFile = Path.ChangeExtension(inputFile, null) + ext + Path.GetExtension(inputFile);
          string OutputFileLines = Path.ChangeExtension(inputFile, null) + extl + Path.GetExtension(inputFile);
